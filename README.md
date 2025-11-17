@@ -2,7 +2,7 @@
 
 An intelligent, serverless web application that analyzes customer product reviews using **AWS Comprehend** to extract **sentiment** (Positive, Negative, Neutral, Mixed) and **key phrases**. The app provides a clean dashboard for visualizing sentiment trends and insights — built with a fully serverless AWS architecture and a modern React frontend.
 
-<img width="1649" height="1310" alt="Architecture-diagram" src="https://github.com/user-attachments/assets/fd45f48b-1906-4139-ab30-95e5470875d9" />
+<img width="1649" height="1310" alt="Architecture-diagram" src="./aws-architecture.png" />
 
 ---
 
