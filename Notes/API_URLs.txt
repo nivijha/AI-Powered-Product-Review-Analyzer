@@ -1,0 +1,2 @@
+getReviews_URI: https://oo2obvjgzk.execute-api.us-east-1.amazonaws.com/default/getReviews
+analyzeREview_URI: https://rstl0vraee.execute-api.us-east-1.amazonaws.com/default/analyzeReview

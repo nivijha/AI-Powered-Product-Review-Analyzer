@@ -62,70 +62,39 @@ The AI-Powered Product Review Analyzer follows a fully serverless architecture u
 
 ---
 
-### ⚙️ Technical Workflow Explanation
-
-**Review Submission Flow:**
-
-1. User submits a product review through the React frontend (hosted on Vercel)
-2. Frontend sends POST request to AWS API Gateway endpoint `/analyze`
-3. API Gateway triggers the `analyzeReview` Lambda function
-4. Lambda function calls AWS Comprehend to analyze the review text
-5. Comprehend returns sentiment classification (POSITIVE/NEGATIVE/NEUTRAL/MIXED), confidence scores, and key phrases
-6. Lambda stores the complete analysis result in DynamoDB `ProductReviews` table
-7. Response with sentiment data is returned to frontend
-8. Frontend displays the result with appropriate UI state
-
-**Dashboard Retrieval Flow:**
-
-1. Frontend sends GET request to API Gateway endpoint `/reviews`
-2. API Gateway triggers the `getReviews` Lambda function
-3. Lambda queries DynamoDB to retrieve all stored reviews
-4. Aggregated sentiment data is calculated and returned
-5. Frontend visualizes data using sentiment chart and review list components
-6. Users can filter, search, and paginate through reviews (optional features)
-
-**Monitoring & Security:**
-- CloudWatch logs all Lambda executions and errors for debugging
-- IAM roles enforce least-privilege access between AWS services
-- API Gateway handles CORS configuration for secure frontend-backend communication
-
-The React interface provides an interactive user experience with distinct states (loading, error, empty, result), and includes optional enhancements like filtering, searching, pagination, and dark mode. Together, these components create a scalable, serverless application that integrates AI-powered sentiment analysis with dynamic data visualization.
-
----
-
 ## 📂 Project Structure
 
 ```
-ai-product-review-analyzer/
+AI-POWERED-PRODUCT-REVIEW-ANALYZER/
 │
-├── frontend/                      # React frontend
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ReviewForm.jsx
-│   │   │   ├── ReviewResult.jsx
-│   │   │   ├── Dashboard.jsx
-│   │   │   ├── ReviewList.jsx
-│   │   │   └── SentimentChart.jsx
-│   │   ├── utils/
-│   │   │   └── api.js
-│   │   ├── App.js
-│   │   └── index.js
-│   ├── package.json
-│   └── tailwind.config.js
+├── ai-product-review-analyzer/
+│   ├── node_modules/
+│   ├── public/
+│   └── src/
+│       └── assets/
+│           └── react.svg
 │
-├── backend/                       # AWS Lambda functions
-│   ├── analyzeReview/
-│   │   ├── index.js
-│   │   └── package.json
-│   ├── getReviews/
-│   │   ├── index.js
-│   │   └── package.json
-│   └── utils/
-│       └── dynamoClient.js
+├── App.css
+├── App.jsx
+├── main.jsx
+├── index.html
 │
-├── architecture-diagram.png
+├── .gitignore
+├── eslint.config.js
+├── package-lock.json
+├── package.json
 ├── README.md
-└── .gitignore
+├── vite.config.js
+│
+├── backend/
+│   ├── analyzeReview-sam.yml
+│   ├── analyzeReview.zip
+│   ├── getReviews.yml
+│   └── getReviews.zip
+│
+└── Notes/
+    ├── APIURLs.txt
+    └── README.md
 ```
 
 ---
@@ -135,78 +104,10 @@ ai-product-review-analyzer/
 ### 1. **Frontend Setup (React)**
 
 ```bash
-cd frontend
+cd ai-product-review-analyzer
 npm install
 npm start
 ```
-
-Update your `.env` file:
-
-```ini
-REACT_APP_API_URL=<Your API Gateway base URL>
-```
-
-### 2. **Backend Setup (AWS)**
-
-#### Step 1: Create Lambda Functions
-
-1. Create two Lambda functions:
-   - `analyzeReview`
-   - `getReviews`
-
-2. Assign IAM Role with permissions for:
-   - AWS Comprehend
-   - DynamoDB (Read/Write)
-   - CloudWatch Logs
-
-#### Step 2: Create DynamoDB Table
-
-- **Table name:** `ProductReviews`
-- **Partition key:** `id` (String)
-- **Enable:** On-demand billing or provisioned capacity
-
-#### Step 3: Set Up API Gateway
-
-1. Create REST API
-2. Create endpoints:
-   - `POST /analyze` → triggers `analyzeReview` Lambda
-   - `GET /reviews` → triggers `getReviews` Lambda
-3. **Enable CORS** on both endpoints
-4. Deploy API to a stage (e.g., `prod`)
-
-### 3. **Deploy Frontend**
-
-Deploy your React app on **Vercel** (or Netlify):
-
-1. Connect GitHub repository
-2. Configure environment variable: `REACT_APP_API_URL`
-3. Deploy
-
----
-
-## 💾 DynamoDB Schema
-
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| `id` | String | Unique identifier (UUID) |
-| `reviewText` | String | Original user review |
-| `sentiment` | String | Sentiment category (POSITIVE/NEGATIVE/NEUTRAL/MIXED) |
-| `sentimentScores` | Map | Confidence scores for each sentiment |
-| `keyPhrases` | List | Extracted key phrases |
-| `timestamp` | String | ISO timestamp |
-
----
-
-## 📊 Dashboard Features
-
-- ✅ Pie chart displaying sentiment distribution
-- ✅ Review list with color-coded sentiment tags
-- ✅ Filter reviews by sentiment type
-- ✅ View individual key phrases and confidence scores
-- ✅ Optional: search, pagination, dark mode
-
----
-
 ## 🌟 Future Enhancements
 
 - 🔔 **Email notifications** using AWS SES for weekly sentiment summaries
@@ -232,9 +133,3 @@ Deploy your React app on **Vercel** (or Netlify):
 This project is licensed under the **MIT License** — you are free to modify and use it for learning and portfolio purposes.
 
 ---
-
-## 🏁 Summary
-
-The **AI-Powered Product Review Analyzer** demonstrates how AI and serverless architecture can be seamlessly integrated to create a scalable, intelligent, and interactive cloud application. Built with **AWS Lambda**, **DynamoDB**, **Comprehend**, and a modern **React** frontend, it serves as an excellent showcase of applied cloud computing and natural language processing.
-
-Perfect for portfolios, internships, and demonstrating full-stack serverless development skills! 🚀
