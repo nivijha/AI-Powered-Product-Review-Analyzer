@@ -38,9 +38,7 @@ The architecture diagram above illustrates the complete data flow:
 
 **Frontend Layer:**
 - React App with multiple UI states (Loading, Error, Empty, Result)
-- Dashboard with filters, sentiment chart, and review list
-- Optional features: Search, pagination, CSV export, dark mode
-- Review Form for user input
+- Dashboard with sentiment chart, and review list
 
 **AWS Cloud Environment:**
 - **API Gateway**: Entry point for all HTTP requests
