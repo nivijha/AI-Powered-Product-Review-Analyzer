@@ -11,8 +11,6 @@ An intelligent, serverless web application that analyzes customer product review
 - 🗣 **AI-Powered Sentiment Analysis** using AWS Comprehend
 - ☁️ **Serverless Backend** with AWS Lambda, API Gateway, and DynamoDB
 - 📊 **Interactive Dashboard** for visualizing sentiment distribution
-- 💬 **Real-Time Review Analysis** with sentiment confidence scores
-- 🌐 **Deployed Frontend on Vercel**
   
 ---
 
@@ -38,7 +36,7 @@ The system follows a **serverless and event-driven architecture** using AWS serv
 
 The architecture diagram above illustrates the complete data flow:
 
-**Frontend Layer (Vercel):**
+**Frontend Layer:**
 - React App with multiple UI states (Loading, Error, Empty, Result)
 - Dashboard with filters, sentiment chart, and review list
 - Optional features: Search, pagination, CSV export, dark mode
@@ -58,7 +56,7 @@ The architecture diagram above illustrates the complete data flow:
 
 ### 🧩 Architecture Summary
 
-The AI-Powered Product Review Analyzer follows a fully serverless architecture using AWS services. A React frontend hosted on Vercel communicates with AWS API Gateway endpoints that invoke Lambda functions for sentiment analysis and data retrieval. Reviews are processed through AWS Comprehend for sentiment and key phrase extraction, stored in DynamoDB, and visualized on an interactive dashboard with real-time analytics and user feedback states.
+The AI-Powered Product Review Analyzer follows a fully serverless architecture using AWS services. A React frontend communicates with AWS API Gateway endpoints that invoke Lambda functions for sentiment analysis and data retrieval. Reviews are processed through AWS Comprehend for sentiment and key phrase extraction, stored in DynamoDB, and visualized on an interactive dashboard with real-time analytics and user feedback states.
 
 ---
 
@@ -101,7 +99,7 @@ AI-POWERED-PRODUCT-REVIEW-ANALYZER/
 
 ## 🔧 Setup and Deployment
 
-### 1. **Frontend Setup (React)**
+### **Frontend Setup (React)**
 
 ```bash
 cd ai-product-review-analyzer
