@@ -80,17 +80,7 @@ AI-POWERED-PRODUCT-REVIEW-ANALYZER/
 ├── package-lock.json
 ├── package.json
 ├── README.md
-├── vite.config.js
-│
-├── backend/
-│   ├── analyzeReview-sam.yml
-│   ├── analyzeReview.zip
-│   ├── getReviews.yml
-│   └── getReviews.zip
-│
-└── Notes/
-    ├── APIURLs.txt
-    └── README.md
+└── vite.config.js
 ```
 
 ---
